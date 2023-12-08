@@ -1,5 +1,6 @@
+import { url, successNotification, errorNotification } from "../utils/utils.js";
 // Form Register
-const url = "http://hotel-booking-backend.test";
+
 
 const form_register = document.getElementById("form_register");
 
@@ -24,12 +25,6 @@ form_register.onsubmit = async (e) => {
 
     //get response if 200-299 status code
   if (response.ok) {
-    const json = await response.json();
-    console.log(json);
-
-    document.querySelector(".alert-success").classList.remove("d-none");
-    document.querySelector(".alert-success").classList.add("d-block");
-    
     form_register.reset();
 
     successNotification("Registered Successfully.", 5);
@@ -44,25 +39,3 @@ form_register.onsubmit = async (e) => {
   //enable button
   document.querySelector("#form_register button").disabled = false;
 };
-
-function successNotification(message, seconds){
-  document.querySelector(".alert-success").classList.remove("d-none");
-  document.querySelector(".alert-success").classList.add("d-block");
-  document.querySelector(".alert-success").innerHTML = message;
-  
-  setTimeout(function(){
-      document.querySelector(".alert-success").classList.remove("d-block");
-      document.querySelector(".alert-success").classList.add("d-none");
-  }, seconds * 1000);
-}
-
-function errorNotification(message, seconds){
-  document.querySelector(".alert-danger").classList.remove("d-none");
-  document.querySelector(".alert-danger").classList.add("d-block");
-  document.querySelector(".alert-danger").innerHTML = message;
-
-  setTimeout(function(){
-      document.querySelector(".alert-danger").classList.remove("d-block");
-      document.querySelector(".alert-danger").classList.add("d-none");
-  }, seconds * 1000);
-}

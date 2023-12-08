@@ -6,6 +6,7 @@
     <title>CtrlAltDelete</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/style.css" />
+    <script src="js/auth/login.js" type="module"></script>
   </head>
   <body>
     <!-- <div
@@ -20,30 +21,58 @@
     <div class="d-flex align-items-center vh-100">
       <div class="modal-dialog modal-lg border border-secondary">
         <div class="modal-content">
-          <form>
-            <div class="modal-header mt-5 mx-5 mb-4">
-              <h5 class="modal-title d-flex align-items-center fw-bold">
-                <i class="bi bi-person-lines-fill fs-3"></i> User Login
-              </h5>
-              <button
-                id="closeModalBtn"
-                type="button"
-                class="btn-close shadow-none"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
+          <div class="modal-header mt-5 mx-5 mb-4">
+            <h5 class="modal-title d-flex align-items-center fw-bold">
+              <i class="bi bi-person-lines-fill fs-3"></i>
+              User Login
+            </h5>
+            <button
+              id="closeModalBtn"
+              type="button"
+              class="btn-close shadow-none"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- Notification -->
+          <div class="alert alert-success d-none mx-5" role="alert"></div>
+          <div class="alert alert-danger d-none mx-5" role="alert"></div>
+          <!-- Login Form -->
+          <form id="form_login">
             <div class="modal-body mx-5">
               <div class="container-fluid">
                 <div class="row">
                   <div class="ps-0 mb-3">
-                    <label class="form-label">Email address</label>
-                    <input type="email" class="form-control shadow-none" />
+                    <label for="email" class="form-label">Email address</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      class="form-control shadow-none"
+                    />
                   </div>
                   <div class="ps-0 mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control shadow-none" />
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      required
+                      class="form-control shadow-none"
+                    />
                   </div>
+                  <!-- <div class="form-check ps-0 mb-3 mx-4">
+                    <input
+                      class="form-check-input"
+                      id="remember_password"
+                      type="checkbox"
+                      value=""
+                    />
+                    <label for="remember_password" class="form-check-label"
+                      >Remember Password</label
+                    >
+                  </div> -->
                   <div
                     class="d-flex align-items-center justify-content-between mb-5"
                   >
