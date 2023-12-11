@@ -1,4 +1,4 @@
-import { url, successNotification, errorNotification } from "../utils/utils.js";
+import { backendurl, successNotification, errorNotification } from "../utils/utils.js";
 // Form Register
 
 
@@ -15,7 +15,7 @@ form_register.onsubmit = async (e) => {
   const formData = new FormData(form_register);
 
   //fetch api user registered endpoint
-  const response = await fetch(url + "/api/user", {
+  const response = await fetch(backendurl + "/api/user", {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -1,25 +1,34 @@
-const url = "http://hotel-booking-backend.test";
+import { setRouter } from "../router/router.js";
 
-function successNotification(message, seconds){
+setRouter();
+
+const backendurl = "http://hotel-booking-backend.test";
+
+//notification
+function successNotification(message, seconds = ""){
     document.querySelector(".alert-success").classList.remove("d-none");
     document.querySelector(".alert-success").classList.add("d-block");
     document.querySelector(".alert-success").innerHTML = message;
     
-    setTimeout(function(){
+    if(seconds != "") {
+      setTimeout(function(){
         document.querySelector(".alert-success").classList.remove("d-block");
         document.querySelector(".alert-success").classList.add("d-none");
-    }, seconds * 1000);
+      }, seconds * 1000);
+    }
   }
   
-  function errorNotification(message, seconds){
+  function errorNotification(message, seconds = ""){
     document.querySelector(".alert-danger").classList.remove("d-none");
     document.querySelector(".alert-danger").classList.add("d-block");
     document.querySelector(".alert-danger").innerHTML = message;
   
-    setTimeout(function(){
+    if (seconds != ""){
+      setTimeout(function(){
         document.querySelector(".alert-danger").classList.remove("d-block");
         document.querySelector(".alert-danger").classList.add("d-none");
-    }, seconds * 1000);
+      }, seconds * 500);
+    }
   }
 
-  export { url, successNotification, errorNotification};
+  export { backendurl, successNotification, errorNotification};

@@ -1,4 +1,4 @@
-import { url, successNotification, errorNotification } from "../utils/utils.js";
+import { backendurl, successNotification, errorNotification } from "../utils/utils.js";
 
 const form_login = document.getElementById("form_login");
 
@@ -12,7 +12,7 @@ form_login.onsubmit = async (e) => {
   const formData = new FormData(form_login);
 
   //fetch api user registered endpoint
-  const response = await fetch(url + "/api/login", {
+  const response = await fetch(backendurl + "/api/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -31,7 +31,7 @@ form_login.onsubmit = async (e) => {
 
     successNotification("Login Successfully.", 5);
 
-    window.location.pathname = "/dashboard.html"
+    window.location.pathname = "/homepage.html"
   }
   // get response if 422 status code
    else if (response.status == 422) {
