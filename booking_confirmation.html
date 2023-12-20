@@ -5,13 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirm Booking</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="assets/common.css" />
+    <script src="js/auth/booking_confirmation.js" type="module"></script>
   </head>
   <body class="bg-light">
-
     <div class="container">
       <div class="row">
         <div class="col-12 my-5 mb-4 px-4">
@@ -30,38 +41,35 @@
         </div>
 
         <div class="col-lg-7 col-md-12 px-4">
-          <!-- <?php 
-                    $room_thumb = ROOMS_IMG_PATH."thumbnail.jpg";
-                    $thumb_q = mysqli_query($con,"SELECT * FROM `room_images` 
-                        WHERE `room_id`='$room_data[id]' 
-                        AND `thumb`='1'");
-            
-                    if(mysqli_num_rows($thumb_q)>0){
-                        $thumb_res = mysqli_fetch_assoc($thumb_q);
-                        $room_thumb = ROOMS_IMG_PATH.$thumb_res['image'];
-                    }
-
-                    echo<<<data -->
           <div class="card p-3 shadow-sm rounded">
             <img src="assets/img/rooms/1.jpg" class="img-fluid rounded mb-3" />
-            <h5>$room_data[name]</h5>
-            <h6>₱$room_data[price] per night</h6>
+            <h5>Room Name</h5>
+            <h6>Price per night</h6>
           </div>
-          <!-- data;
-
-                ?> -->
         </div>
 
         <div class="col-lg-5 col-md-12 px-4">
           <div class="card mb-4 border-0 shadow rounded-3">
             <div class="card-body">
-              <form action="#pay_now.php" id="booking_form">
+              <!-- Notification -->
+              <div class="alert alert-success d-none mx-5" role="alert"></div>
+              <div class="alert alert-danger d-none mx-5" role="alert"></div>
+              <form id="booking_form">
                 <h6>Booking Details</h6>
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label class="form-label">Name</label>
+                    <label class="form-label">First Name</label>
                     <input
-                      name="name"
+                      name="firstname"
+                      type="text"
+                      class="form-control shadow-none"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input
+                      name="lastname"
                       type="text"
                       class="form-control shadow-none"
                       required
@@ -70,21 +78,11 @@
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Phone Number</label>
                     <input
-                      name="phonenum"
+                      name="phone_number"
                       type="number"
                       class="form-control shadow-none"
                       required
                     />
-                  </div>
-                  <div class="col-md-12 mb-3">
-                    <label class="form-label">Address</label>
-                    <input
-                      name="address"
-                      type="address"
-                      class="form-control shadow-none"
-                      required
-                    >
-                    </input>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label class="form-label">Check-in</label>
@@ -115,12 +113,12 @@
                       <span class="visually-hidden">Loading...</span>
                     </div>
 
-                    <h6 class="mb-3 text-danger" id="pay_info">
+                    <!-- <h6 class="mb-3 text-danger" id="pay_info">
                       Provide Check-in and Check-out date!
-                    </h6>
+                    </h6> -->
 
                     <button
-                      name="pay_now"
+                      type="submit"
                       class="btn w-100 text-white custom-bg shadow-none mb-1"
                     >
                       Confirm Booking
@@ -133,5 +131,20 @@
         </div>
       </div>
     </div>
+    <script>
+      function check_availability() {
+        const checkInDate = document.querySelector(
+          'input[name="checkin"]'
+        ).value;
+        const checkOutDate = document.querySelector(
+          'input[name="checkout"]'
+        ).value;
+
+        // Perform availability checks or any other actions here
+        console.log(
+          `Checking availability for check-in: ${checkInDate} and check-out: ${checkOutDate}`
+        );
+      }
+    </script>
   </body>
 </html>

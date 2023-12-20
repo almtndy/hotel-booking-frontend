@@ -12,12 +12,14 @@ function setRouter() {
       case"/booking_confirmation.html":
       case "/homepage.html":
         if (!localStorage.getItem("token")) {
-          window.location.pathname = "/";
+          window.location.pathname = "/login.html";
+
         }
         break;
-  
-      default:
+
+    default:
         break;
+  
     }
   }
   

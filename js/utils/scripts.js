@@ -8,9 +8,11 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb|sidenav-toggled'));
         })
     }
+    
 });
 
-//carousel slider
+
+// carousel slider
 // var swiper = new Swiper(".swiper-container", {
 //   spaceBetween: 30,
 //   effect: "fade",
@@ -21,7 +23,7 @@ window.addEventListener('DOMContentLoaded', event => {
 //   },
 // });
 
-//testimonial slider
+// testimonial slider
 // var swiper = new Swiper(".swiper-testimonials", {
 //   effect: "coverflow",
 //   grabCursor: true,

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="admin.js" type="module"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
@@ -18,7 +19,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="assets/common.css" />
+    <link rel="stylesheet" href="styles.css" />
     <style>
       div.login-form {
         position: absolute;
@@ -31,25 +32,29 @@
   </head>
   <body class="bg-light">
     <div class="login-form text-center rounded bg-white shadow overflow-hidden">
-      <form method="POST">
+      <form id="admin_login">
         <h4 class="bg-dark text-white py-3">Admin Login Panel</h4>
+        <!-- Notification -->
+        <div class="alert alert-success d-none mx-5" role="alert"></div>
+        <div class="alert alert-danger d-none mx-5" role="alert"></div>
         <div class="p-4">
           <div class="mb-3">
             <input
-              name="admin_name"
+              name="name"
               required
-              type="text"
+              type="name"
               class="form-control shadow-none text-center"
-              placeholder="Admin Name"
+              placeholder="name"
             />
           </div>
           <div class="mb-4">
             <input
-              name="admin_pass"
+              name="password"
               required
               type="password"
               class="form-control shadow-none text-center"
-              placeholder="Password"
+              placeholder="password"
+              autocomplete="password"
             />
           </div>
           <button
@@ -63,7 +68,7 @@
       </form>
     </div>
 
-    <script>
+    <!-- <script>
       function alert(type, msg, position = "body") {
         let bs_class = type == "success" ? "alert-success" : "alert-danger";
         let element = document.createElement("div");
@@ -101,6 +106,6 @@
         }
       }
       setActive();
-    </script>
+    </script> -->
   </body>
 </html>
