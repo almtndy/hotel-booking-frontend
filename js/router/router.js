@@ -8,6 +8,7 @@ function setRouter() {
           window.location.pathname = "/homepage.html";
         }
         break;
+
       // If you are not logged in you cant access homepage; redirect to /
       case"/booking_confirmation.html":
       case "/homepage.html":
@@ -16,9 +17,10 @@ function setRouter() {
 
         }
         break;
-
+        
     default:
         break;
+
   
     }
   }

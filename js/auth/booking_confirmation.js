@@ -9,7 +9,10 @@ bookingForm.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
 
   try {
+    const user_id = localStorage.getItem("user_id");
+    
     const formData = new FormData(bookingForm);
+    formData.append("user_id",user_id);
 
     const response = await fetch(`${backendurl}/api/booking`, {
       method: "POST",

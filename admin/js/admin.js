@@ -1,4 +1,4 @@
-import { backendurl, successNotification, errorNotification } from "../js/utils/utils.js";
+import { backendurl, successNotification, errorNotification } from "../../js/utils/utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const admin_login = document.getElementById("admin_login");
