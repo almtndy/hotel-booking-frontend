@@ -1,40 +1,68 @@
-import { backendurl, successNotification, errorNotification } from "../utils/utils.js";
+const backendURL = 'http://hotel-booking-backend.test';
 
-// rooms.js file content
-function add_room() {
-  // Get the form data
-  let formData = new FormData(document.getElementById("add_room_form"));
+// Add an event listener to the form
+const addRoomForm = document.getElementById('add_room_form');
 
-  // Fetch API call to submit form data
-  fetch(`${backendurl}/api/room`, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
+addRoomForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  // Disable Button
+  document.querySelector("#add_room_form button[type='submit']").disabled = true;
+  document.querySelector(
+    "#add_room_form button[type='submit']"
+  ).innerHTML = `<div class="spinner-border me-2" role="status"></div><span>Loading...</span>`;
+
+  // Get Values of Form (input, textarea, select) set it as form-data
+  const formData = new FormData(addRoomForm);
+
+  // Fetch API Add Room Endpoint
+  try {
+    const response = await fetch(`${backendURL}/api/room`, {
+      method: 'POST',
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+    });
+
     if (response.ok) {
-      // If the response is successful, do something (e.g., show success message)
-      document.querySelector('.alert-success').classList.remove('d-none');
-      document.querySelector('.alert-danger').classList.add('d-none');
-      // You might want to update the room list or perform other actions upon success
+      const json = await response.json();
+
+      // Reset the form
+      addRoomForm.reset();
+
+      // Show success notification
+      successNotification('Room added successfully.');
+
+      // Additional logic or redirection if needed
     } else {
-      // If there's an error in the response, show an error message
-      document.querySelector('.alert-danger').classList.remove('d-none');
-      document.querySelector('.alert-success').classList.add('d-none');
+      const json = await response.json();
+
+      // Show error notification
+      errorNotification(json.message || 'An error occurred.');
     }
-  })
-  .catch(error => {
-    // Handle any errors that might occur during the fetch call
+  } catch (error) {
     console.error('Error:', error);
-  });
-}
 
-// Add an event listener to the form submission
-let add_room_form = document.getElementById("add_room_form");
+    // Show error notification
+    errorNotification('An unexpected error occurred.');
+  }
 
-add_room_form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  add_room();
+  // Enable Button
+  document.querySelector("#add_room_form button[type='submit']").disabled = false;
+  document.querySelector("#add_room_form button[type='submit']").innerHTML = `Submit`;
 });
 
+// Function to show success notification
+function successNotification(message) {
+  const successAlert = document.querySelector('.alert-success');
+  successAlert.textContent = message;
+  successAlert.classList.remove('d-none');
+}
 
-//ambot d mo fetch :((
+// Function to show error notification
+function errorNotification(message) {
+  const errorAlert = document.querySelector('.alert-danger');
+  errorAlert.textContent = message;
+  errorAlert.classList.remove('d-none');
+}

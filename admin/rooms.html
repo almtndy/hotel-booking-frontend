@@ -18,7 +18,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="/admin/css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="/admin/js/showroom.js"></script>
+    <script type="module" src="/admin/js/rooms.js"></script>
   </head>
   <body class="bg-white">
     <div
@@ -99,9 +101,10 @@
                   <thead>
                     <tr class="bg-dark text-light">
                       <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">room_name</th>
+                      <th scope="col">price</th>
+                      <th scope="col">details</th>
+                      <!-- <th scope="col">action</th> -->
                     </tr>
                   </thead>
                   <tbody id="room-data"></tbody>
@@ -136,37 +139,43 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label class="form-label fw-bold">Name</label>
+                  <label for="room_name" class="form-label fw-bold">Name</label>
                   <input
+                    id="room_name"
                     type="text"
                     name="room_name"
                     class="form-control shadow-none"
                     required
                   />
                 </div>
+            
                 <div class="col-md-6 mb-3">
-                  <label class="form-label fw-bold">Image</label>
+                  <label for="image_path" class="form-label fw-bold">Image</label>
                   <input
                     type="file"
                     min="1"
+                    id="image_path"
                     name="image_path"
                     class="form-control shadow-none"
-                    required
                   />
                 </div>
+            
                 <div class="col-md-6 mb-3">
-                  <label class="form-label fw-bold">Price</label>
+                  <label for="price" class="form-label fw-bold">Price</label>
                   <input
+                    id="price"
                     type="number"
-                    min="1"
                     name="price"
+                    min="1"
                     class="form-control shadow-none"
                     required
                   />
                 </div>
+            
                 <div class="col-12 mb-3">
-                  <label class="form-label fw-bold">Details</label>
+                  <label for="details" class="form-label fw-bold">Details</label>
                   <textarea
+                    id="details"
                     name="details"
                     rows="4"
                     class="form-control shadow-none"
@@ -190,10 +199,10 @@
                 Submit
               </button>
             </div>
-          </div>
-        </form>
-      </div>
-    </div>
+            </form>
+            </div>
+            </div>
+            
 
     <!-- Manage room images modal -->
 
@@ -260,13 +269,13 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <!-- <script>
+    <script>
       let add_room_form = document.getElementById("add_room_form");
 
       add_room_form.addEventListener("submit", function (e) {
         e.preventDefault();
         add_room();
       });
-    </script> -->
+    </script>
   </body>
 </html>

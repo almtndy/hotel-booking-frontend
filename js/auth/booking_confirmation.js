@@ -10,9 +10,17 @@ bookingForm.addEventListener("submit", async (event) => {
 
   try {
     const user_id = localStorage.getItem("user_id");
-    
+    // Get the room_id value 
+    const room_id = parseInt(1, 10);
+
+    // Check if room_id is a valid integer
+    if (!Number.isInteger(room_id)) {
+      throw new Error('Room ID should be an integer.');
+    }
+
     const formData = new FormData(bookingForm);
-    formData.append("user_id",user_id);
+    formData.append("user_id", user_id);
+    formData.append("room_id", room_id);
 
     const response = await fetch(`${backendurl}/api/booking`, {
       method: "POST",
@@ -34,7 +42,7 @@ bookingForm.addEventListener("submit", async (event) => {
       }
     }
   } catch (error) {
-    errorNotification("An error occurred. Please try again later.", 5);
+    errorNotification(error.message || "An error occurred. Please try again later.", 5);
     console.error("Error during form submission:", error);
   } finally {
     submitButton.disabled = false;
